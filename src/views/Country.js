@@ -19,7 +19,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import moment from 'moment';
 import axios from 'axios';
 
-const useStyles1 = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
     marginLeft: theme.spacing(2.5),
@@ -27,7 +27,7 @@ const useStyles1 = makeStyles((theme) => ({
 }));
 
 function TablePaginationActions(props) {
-  const classes = useStyles1();
+  const classes = useStyles();
   const theme = useTheme();
   const { count, page, rowsPerPage, onChangePage } = props;
 
@@ -126,6 +126,19 @@ const Country = (props) => {
     </TableRow>;
   })
 
+  let pagination = Boolean(countryData.length) 
+  ? <TablePagination
+    className="table-paging"
+    rowsPerPageOptions={[10, 20, 50]}
+    component="div"
+    count={countryData.length}
+    rowsPerPage={rowsPerPage}
+    page={page}
+    onChangePage={handleChangePage}
+    onChangeRowsPerPage={handleChangeRowsPerPage}
+    ActionsComponent={TablePaginationActions}
+  /> : null;
+
   return <Container className='country' maxWidth='lg'>
     <Box className='country-header'>{name}</Box>
     <TableContainer component={Paper} className="table-container">
@@ -144,17 +157,7 @@ const Country = (props) => {
         </TableBody>
       </Table>
     </TableContainer>
-    <TablePagination
-      className="table-paging"
-      rowsPerPageOptions={[10, 20, 50]}
-      component="div"
-      count={countryData.length}
-      rowsPerPage={rowsPerPage}
-      page={page}
-      onChangePage={handleChangePage}
-      onChangeRowsPerPage={handleChangeRowsPerPage}
-      ActionsComponent={TablePaginationActions}
-    />
+    {pagination}
   </Container>;
 }
 

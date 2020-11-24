@@ -157,6 +157,7 @@ code {
       margin-top: 10px;
       cursor: pointer;
       color: #484848;
+      background: #d2d2d2;
 
       &:hover {
         color: #5d5d5d;
@@ -178,6 +179,14 @@ code {
     padding: 20px;
     border-bottom: 2px solid #4e4e4e;
     margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.75);
+    margin-top: 20px;
+  }
+
+  .table-paging {
+    background: rgba(255, 255, 255, 0.75);
+    margin-top: 5px;
+    border-radius: 5px;
   }
 }
 
