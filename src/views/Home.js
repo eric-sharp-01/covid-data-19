@@ -38,7 +38,7 @@ const Home = (props) => {
     let maximum = countries[0].totalConfirmed;
     let width = `calc((100% - 240px) * ${c.totalConfirmed / maximum})`;
 
-    return <div className="header-country" key={c.country}>
+    return <div className="item" key={c.country}>
       <span>{c.country}</span>
       <Box className="quantity-indicator" width={width}>{c.totalConfirmed}</Box>
     </div>;
@@ -64,7 +64,7 @@ const Home = (props) => {
       </Grid>
       <Box marginTop={'20px'} />
       <Grid container>
-        <Grid item xs={12}>
+        <Grid item xs={12} className="country-list">
           {countryElements}
         </Grid>
       </Grid>
