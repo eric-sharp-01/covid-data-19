@@ -7,6 +7,8 @@ import axios from 'axios';
 
 
 const Home = (props) => {
+  const { openBackdrop, closeBackdrop } = props;
+
   const [worldData, setWorldData] = useState({
     newConfirmed: 0,
     newDeaths: 0,
@@ -19,18 +21,18 @@ const Home = (props) => {
   const [countries, setCountries] = useState([]);
   
   useEffect(() => {
-    props.openBackdrop();
+    openBackdrop();
 
     axios.get('/summary').then(res => {
       let data = res.data;
-      setWorldData(data.global)
+      setWorldData(data.global);
       let countryData = data.countries.sort((b, a) => {
         return a.totalConfirmed - b.totalConfirmed;
       }).slice(0, 50);
-      setCountries(countryData)
-      props.closeBackdrop();
+      setCountries(countryData);
+      closeBackdrop();
     })
-  }, [])
+  }, [openBackdrop, closeBackdrop])
 
   const countryElements = countries.map(c => {
     let maximum = countries[0].totalConfirmed;

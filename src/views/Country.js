@@ -5,7 +5,6 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
-import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import IconButton from '@material-ui/core/IconButton';
@@ -101,15 +100,7 @@ const Country = (props) => {
       setCountryData(data);
       closeBackdrop();
     })
-  }, [openBackdrop, closeBackdrop])
-
-  const [columns] = useState([
-    { name: 'date', title: 'Date' },
-    { name: 'confirmed', title: 'Confirmed' },
-    { name: 'active', title: 'Active' },
-    { name: 'recovered', title: 'Recovered' },
-    { name: 'deaths', title: 'Deaths' }
-  ]);
+  }, [openBackdrop, closeBackdrop, params.slug])
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);

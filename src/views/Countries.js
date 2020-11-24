@@ -1,10 +1,9 @@
 import { Container, InputBase, Button, Box } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 const Countries = (props) => {
-
   const [countries, setCountries] = useState([])
   const [searchInput, setSearchInput] = useState('')
   const handleInputValue = (e) => {
