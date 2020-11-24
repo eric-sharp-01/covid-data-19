@@ -1,25 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import { CircularProgress, Backdrop } from '@material-ui/core';
+import Home from 'views/Home';
+import Country from 'views/Country';
+import Countries from 'views/Countries';
+import Navbar from 'components/Navbar';
 
-function App() {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 0,
+    paddingRight: 10
+  },
+  menu: {
+    flexGrow: 1
+  },
+  link: {
+    color: "white",
+    textDecoration: 'none',
+    "&:hover, &:focus": {
+      color: "#ececec"
+    }
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  }
+}));
+
+function App(props) {
+  const classes = useStyles();
+  useEffect(() => {
+
+  }, []);
+  const { openBackdrop } = props;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Backdrop className={classes.backdrop} open={openBackdrop}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/countries' component={Countries} />
+          <Route exact path='/countries/:slug' component={Country} />
+        </Switch>
+    </Router>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    openBackdrop: state.main.openBackdrop
+  }
+}
+
+const mapDispatchToProps = {
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
