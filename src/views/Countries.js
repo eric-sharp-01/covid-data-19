@@ -33,7 +33,7 @@ const Countries = (props) => {
   })
   return (
     <Container className='countries'>
-      <Box className='search-bar' display='flex' justifyContent='center'>
+      <Box className='search-bar' display='flex' justifyContent='center' marginTop={15}>
         <InputBase placeholder={'search...'} className='search-bar-input' onChange={handleInputValue} onKeyPress={search}></InputBase>
         <Button variant="contained" color="primary" onClick={search}>Search</Button>
       </Box>
