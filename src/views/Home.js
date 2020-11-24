@@ -53,12 +53,12 @@ const Home = (props) => {
         </Grid>
         <Grid item xs={12}>
           <div className="world-data">
-            <div>New Confirmed: {worldData.newConfirmed}</div>
-            <div>New Deaths: {worldData.newDeaths}</div>
-            <div>New Recovered: {worldData.newRecovered}</div>
-            <div>Total Confirmed: {worldData.totalConfirmed}</div>
-            <div>Total Deaths: {worldData.totalDeaths}</div>
-            <div>Total Recovered: {worldData.totalRecovered}</div>
+            <div>New Confirmed: <br/> {worldData.newConfirmed}</div>
+            <div>New Deaths: <br/> {worldData.newDeaths}</div>
+            <div>New Recovered: <br/> {worldData.newRecovered}</div>
+            <div>Total Confirmed: <br/> {worldData.totalConfirmed}</div>
+            <div>Total Deaths: <br/> {worldData.totalDeaths}</div>
+            <div>Total Recovered: <br/> {worldData.totalRecovered}</div>
           </div>
         </Grid>
       </Grid>
